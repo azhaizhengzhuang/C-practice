@@ -1,2 +1,0 @@
-#define _CRT_SECURE_NO_WARNINGS 1
-int add(int, int);//别忘了引号了
