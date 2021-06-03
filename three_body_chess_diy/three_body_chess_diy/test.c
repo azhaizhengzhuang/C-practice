@@ -17,7 +17,7 @@ void three_body_chess()
 			break;
 		computermove(board);//电脑走
 		print_board(board);//打印棋盘
-		iswin(board);//判断结果
+		ret=iswin(board);//判断结果
 		if (ret!='0')
 			break;
 	}
@@ -27,7 +27,7 @@ void three_body_chess()
 	}
 	else if (ret == '@')
 	{
-		printf("憨批 这也能输\n\n");
+		printf("憨批 连傻子都打不赢\n\n");
 	}
 	else
 	{
