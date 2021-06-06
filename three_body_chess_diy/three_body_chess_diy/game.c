@@ -326,7 +326,7 @@ void computer3move(char board[row][col])
 //1能赢的位置
 //2不下会输的位置
 //3若对手占角 走对角 防止对角定式
-//4随机走
+//4有权重地随机走
 //4.1走角
 //4.2走中心
 //4.3走边
@@ -525,9 +525,9 @@ void computer3move(char board[row][col])
 		{
 			board[0][2] = '@';
 		}
-		else
+		else if ((i == 3) && (board[2][2] == ' '))
 		{
-			board[0][2] = '@';
+			board[2][2] = '@';
 		}
 		goto end;
 	}
@@ -552,20 +552,21 @@ void computer3move(char board[row][col])
 		{
 			continue;
 		}
+		goto end;
 	}
 end:;
 }
 
 
 void computer4move(char board[row][col])
-//冠军走法
+//完美兰特走法
 //按以下优先级下
 //1能赢的位置
 //2不下会输的位置
-//4随机走
-//4.1走中(若中被玩家占了 先走角 在走边)
-//4.2走边
-//4.3走角
+//3有权重且会检测定式地随机走
+//3.1走中(若中被玩家占了 先走角 再走边)
+//3.2走边(若形成一个角的两个边被占了 走那个角)
+//3.3走角
 {
 	//1能赢的位置
 	//1.1四个角落
@@ -724,8 +725,8 @@ void computer4move(char board[row][col])
 		goto end;
 	}
 
-	//4随机位置
-	//4.1走中（若中被玩家占领 优先走角）
+	//3随机位置
+	//3.1走中（若中被玩家占领 优先走角）
 	if (board[1][1] == ' ')
 	{
 		board[1][1] = '@';
@@ -746,14 +747,33 @@ void computer4move(char board[row][col])
 		{
 			board[2][0] = '@';
 		}
-		else
+		else if ((i == 3) && (board[2][2]==' '))
 		{
 			board[2][2] = '@';
 		}
 		goto end;
 	}
-	//4.2走边
-
+	//3.2（同一个角的边被占了的情况 就优先走那个角）走边
+	if ((board[0][0] == ' ') && (board[1][0] == '*') && (board[0][1] == '*'))
+	{
+		board[0][0] = '@';
+		goto end;
+	}
+	else if ((board[0][2] == ' ') && (board[1][2] == '*') && (board[0][1] == '*'))
+	{
+		board[0][2] = '@';
+		goto end;
+	}
+	else if ((board[2][0] == ' ') && (board[2][1] == '*') && (board[1][0] == '*'))
+	{
+		board[2][0] = '@';
+		goto end;
+	}
+	else if ((board[2][2] == ' ') && (board[2][1] == '*') && (board[1][2] == '*'))
+	{
+		board[2][2] = '@';
+		goto end;
+	}
 	while ((board[1][0] == ' ') || (board[0][1] == ' ') || (board[1][2] == ' ') || (board[2][1] == ' '))
 	{
 		int i = rand() % 4;
@@ -769,7 +789,7 @@ void computer4move(char board[row][col])
 		{
 			board[1][2] = '@';
 		}
-		else
+		else if ((i == 3) && (board[2][1] == ' '))
 		{
 			board[2][1] = '@';
 		}
@@ -777,7 +797,7 @@ void computer4move(char board[row][col])
 	}
 
 	
-	//4.3走角
+	//3.3走角
 	
 	while (1)
 	{
@@ -793,6 +813,7 @@ void computer4move(char board[row][col])
 		{
 			continue;
 		}
+		goto end;
 	}
 	
 end:;

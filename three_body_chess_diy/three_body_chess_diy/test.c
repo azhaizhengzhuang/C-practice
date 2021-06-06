@@ -109,50 +109,58 @@ void three_body_chess(int d)
 
 void game()
 {
-	int input = 0;
+	char input = 0;
 	while (1)
 	{
 		do
 		{
 			menu();
 			printf("请选择：>");
-			scanf("%d", &input);
+			scanf("%c", &input);
 			switch (input)
 			{
-			case 1:
+			case '1':
 				break;
 			default:
 				printf("旁白：“你别跟我扯那些有的没的。”\n");
 				break;
 			}
-		} while (input != 1);
+			while (getchar() != '\n')
+			{
+				;
+			}
+		} while (input != '1');
 		do
 		{
 
 			difficulty();
 			printf("请输入对应的数字：>");
-			scanf("%d", &input);
+			scanf("%c", &input);
 			switch (input)
 			{
-			case 1:
-				three_body_chess(input);
+			case '1':
+				three_body_chess(1);
 				break;
-			case 2:
-				three_body_chess(input);
+			case '2':
+				three_body_chess(2);
 				break;
-			case 3:
-				three_body_chess(input);
+			case '3':
+				three_body_chess(3);
 				break;
-			case 4:
-				three_body_chess(input);
+			case '4':
+				three_body_chess(4);
 				break;
-			case 5:
-				three_body_chess(input);
+			case '5':
+				three_body_chess(5);
 			default:
 				printf("\n旁白：“反正这件事你安排就对了。”\n");
 				break;
 			}
-		} while ((input != 1) && (input != 2) && (input != 3));
+			while (getchar()!='\n')
+			{
+				;
+			}
+		} while ((input != '1') && (input != '2') && (input != '3')&&(input!='4')&&(input!='5'));
 	}
 }
 
