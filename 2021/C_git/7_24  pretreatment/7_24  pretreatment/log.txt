@@ -1,0 +1,10 @@
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:0
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:1
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:2
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:3
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:4
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:5
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:6
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:7
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:8
+file:d:\code\c-practice\2021\c_git\7_24  pretreatment\7_24  pretreatment\test.c line:25 data:Jul 26 2021 time:11:59:07 i:9
