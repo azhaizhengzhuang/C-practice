@@ -40,16 +40,38 @@
 //}
 
 //用#define定义宏
-#define SQUARE(X) X*X
+//#define SQUARE(X) X*X
+//int main()
+//{
+//	//int ret = SQUARE(5);
+//	//printf("%d\n", ret);//打印结果为25
+//	//宏与函数的本质区别
+//	//printf("%d\n", SQUARE(5 + 1));//打印结果不是36 是11 因为宏是直接替换参数的 
+//	//代码改进 充分利用运算符号优先级
+//	//printf("%d\n", SQUARE((5 + 1)));
+//
+//	//宏的本质 用参数替换文本
+//	return 0;
+//}
+
+//在宏中怎么用参数替换字符串？
+//#
+//#define PRINT(X)  printf("the value of " #X " is %d\n",X);
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	PRINT(a);
+//	PRINT(b);
+//	printf("hello"  "world\n" );
+//	return 0;
+//}
+
+//怎么把两个符号相连？（##）
+#define CAT(X,Y) X##Y
 int main()
 {
-	//int ret = SQUARE(5);
-	//printf("%d\n", ret);//打印结果为25
-	//宏与函数的本质区别
-	//printf("%d\n", SQUARE(5 + 1));//打印结果不是36 是11 因为宏是直接替换参数的 
-	//代码改进 充分利用运算符号优先级
-	//printf("%d\n", SQUARE((5 + 1)));
-
-	//宏的本质 用参数替换文本
+	int DAY10 = 10;
+	printf("%d\n", CAT(DAY, 10));
 	return 0;
 }
