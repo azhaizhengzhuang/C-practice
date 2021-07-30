@@ -68,10 +68,53 @@
 //}
 
 //怎么把两个符号相连？（##）
-#define CAT(X,Y) X##Y
-int main()
-{
-	int DAY10 = 10;
-	printf("%d\n", CAT(DAY, 10));
-	return 0;
-}
+//#define CAT(X,Y) X##Y
+//int main()
+//{
+//	int DAY10 = 10;
+//	printf("%d\n", CAT(DAY, 10));
+//	return 0;
+//}
+
+////带副作用的宏参数
+//#define MAX(A,B) ((A)>(B)?(A):(B))
+//int main()
+//{
+//	int a = 10;
+//	int b = 11;
+//	int max = MAX(a++, b++);
+//	printf("%d\n%d\n%d\n", max, a, b);//12 11 13
+//	return 0;
+//}
+
+//使用宏传类型本身
+//案例一 使用宏计算变量大小
+//#define SIZEOF(type) sizeof(type)
+//int main()
+//{
+//	int ret = SIZEOF(int);
+//	printf("%d\n", ret);//4
+//	return 0;
+//}
+//案例二 使用宏简化malloc
+//#include<malloc.h>
+//#include<stdlib.h>
+//#define  MALLOC(type,num)  (type*)malloc(num*sizeof(type))
+//
+//int main()
+//{
+//	int* p = MALLOC(int, 10);
+//	free(p);
+//	p = NULL;
+//	return 0;
+//}
+
+//#undef用于移除一个宏定义
+
+//#define MAX 100
+//#undef MAX
+//int main()
+//{
+//	printf("%d\n", MAX);//未声明的标识符
+//	return 0;
+//}
