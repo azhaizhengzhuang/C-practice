@@ -118,3 +118,50 @@
 //	printf("%d\n", MAX);//未声明的标识符
 //	return 0;
 //}
+
+//条件编译
+
+//1单分支
+
+//int main()
+//{
+//    #if 1
+//	printf("hehe\n");
+//    #endif
+//	return 0;
+//}
+
+//2多分支
+
+//int main()
+//{
+//    #if 0
+//	printf("hehe\n");
+//    #elif 1
+//	printf("haha\n");
+//    #else
+//	printf("gaga\n");
+//    #endif
+//	return 0;
+//}
+
+//3判断是否被定义
+
+#define DEBUG
+
+int main()
+{
+	int arr[10] = { 0 };
+	int i;
+	for (i = 0; i < 10; i++)
+	{
+		arr[i] = i;
+#ifdef DEBUG
+		printf("%d ", arr[i]);
+#endif
+	}
+#ifndef DEBUG
+	printf("haha\n");
+#endif
+	return 0;
+}
