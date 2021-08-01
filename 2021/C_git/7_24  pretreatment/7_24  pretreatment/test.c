@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+#include "add.h"
 //VS2013long类型的大小测试
 //int main()
 //{
@@ -147,21 +148,45 @@
 
 //3判断是否被定义
 
-#define DEBUG
+//#define DEBUG
+//
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int i;
+//	for (i = 0; i < 10; i++)
+//	{
+//		arr[i] = i;
+//#ifdef DEBUG
+//		printf("%d ", arr[i]);
+//#endif
+//	}
+//#ifndef DEBUG
+//	printf("haha\n");
+//#endif
+//	return 0;
+//}
 
+
+//int main()
+//{
+//	printf("%d\n",add(1, 2));
+//	return 0;
+//}
+
+//ofsetof的使用
+#include <stddef.h>
+struct S
+{
+	char i;
+	int a;
+	char j;
+};
 int main()
 {
-	int arr[10] = { 0 };
-	int i;
-	for (i = 0; i < 10; i++)
-	{
-		arr[i] = i;
-#ifdef DEBUG
-		printf("%d ", arr[i]);
-#endif
-	}
-#ifndef DEBUG
-	printf("haha\n");
-#endif
+	printf("i:%d\n", offsetof(struct S, i));
+	printf("a:%d\n", offsetof(struct S, a));
+	printf("j:%d\n", offsetof(struct S, j));
 	return 0;
 }
+//offsetof的模拟实现
