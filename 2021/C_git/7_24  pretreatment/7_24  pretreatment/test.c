@@ -174,19 +174,103 @@
 //	return 0;
 //}
 
-//ofsetof的使用
-#include <stddef.h>
-struct S
+////ofsetof的使用和模拟实现
+//#include <stddef.h>
+////利用对地址进行强转达到无中生有的目的
+//#define OFFSETOF(struct_name,member_name) ((int)&(((struct_name*)0)->member_name))
+//struct S
+//{
+//	char i;
+//	int a;
+//	char j;
+//};
+//int main()
+//{
+//	printf("i:%d\n", offsetof(struct S, i));
+//	printf("a:%d\n", offsetof(struct S, a));
+//	printf("j:%d\n", offsetof(struct S, j));
+//	printf("i:%d\n", OFFSETOF(struct S, i));
+//	printf("a:%d\n", OFFSETOF(struct S, a));
+//	printf("j:%d\n", OFFSETOF(struct S, j));
+//	return 0;
+//}
+//offsetof的模拟实现
+
+//测试：传址调用的函数是否有形参
+
+//void fun(int* p1, int*p2)
+//{
+//	printf("&p1=%p\n &p2=%p\n",&p1,&p2);
+//}
+//int main()
+//{
+//	int num1 = 1;
+//	int num2 = 0;
+//	int* pn1 = &num1;
+//	int* pn2 = &num2;
+//	printf("&pn1=%p\n &pn2=%p\n",&pn1,&pn2);
+//	fun(pn1, pn2);
+//
+//	return 0;
+//}
+
+//strncpy模拟实现
+
+//char* my_strncpy(char* des, const char* sou, size_t count)
+//{
+//	char* start = des;
+//	while ((*des++ = *sou++)&&count)
+//	{
+//		count--;
+//	}
+//	if (count)
+//	{
+//		while (--count)
+//		{
+//			*des = '\0';
+//		}
+//	}
+//	return start;
+//}
+//
+#include<string.h>
+//int main()
+//{
+//	char des[] = "good";
+//	char sou[] = "bad";
+//	/*strncpy(des, sou, 4);
+//	printf(des);*/
+//	my_strncpy(des,sou,4);
+//	printf(des);
+//	return 0;
+//}
+
+//strncat
+char* my_strncat(char* dest, const char* source, size_t count)
 {
-	char i;
-	int a;
-	char j;
-};
+	char* start = dest;
+	while (*(++dest))//找到目标字符串的'\0'
+	{
+		;
+	}
+	while (count--)
+	{
+		if (!(*dest++ = *source++))
+		{
+			return start;
+		}
+	}
+	*dest = '\0';
+	return start;
+}
+
 int main()
 {
-	printf("i:%d\n", offsetof(struct S, i));
-	printf("a:%d\n", offsetof(struct S, a));
-	printf("j:%d\n", offsetof(struct S, j));
+	char str1[20] = "abc";
+	char str2[] = "defhgijk";
+	/*strncat(str1, str2, 6);
+	printf(str1);*/
+	my_strncat(str1, str2, 6);
+	printf(str1);
 	return 0;
 }
-//offsetof的模拟实现
