@@ -246,31 +246,106 @@
 //}
 
 //strncat
-char* my_strncat(char* dest, const char* source, size_t count)
+//char* my_strncat(char* dest, const char* source, size_t count)
+//{
+//	char* start = dest;
+//	while (*(++dest))//找到目标字符串的'\0'
+//	{
+//		;
+//	}
+//	while (count--)
+//	{
+//		if (!(*dest++ = *source++))
+//		{
+//			return start;
+//		}
+//	}
+//	*dest = '\0';
+//	return start;
+//}
+//
+//int main()
+//{
+//	char str1[20] = "abc";
+//	char str2[] = "defhgijk";
+//	/*strncat(str1, str2, 6);
+//	printf(str1);*/
+//	my_strncat(str1, str2, 6);
+//	printf(str1);
+//	return 0;
+//}
+
+//编写一个函数 找出两个只出现过一次的数字
+
+//参数问题：为了可以让一个函数返回两个参数 让函数返回一个数组
+
+//方法一：暴力法
+//具体实现：直接使用遍历法 遍历数组的每一个元素 当锁定一个元素后 按顺序找其匹配项 找到一个就锁定下一个元素 找不到就标记为单身狗
+//当找到两个单身狗后返回整形指针
+//void FindDog(int* arr,int size,int* Dog)
+//{
+//	//1锁定每个元素
+//	int i,j,amount;
+//	amount = 0;
+//	for (i = 0; i < size; i++)
+//	{
+//		//2.为每个元素找匹配项
+//		for (j = 0; j < size; j++)
+//		{
+//			if ((i != j) && (arr[i] == arr[j]))
+//			{
+//				break;
+//			}
+//		}
+//		//3.把单身狗放进单身狗数组
+//		if (j == size )
+//		{
+//			Dog[amount] = arr[i];
+//			amount++;
+//			if (2 == amount)
+//			{
+//				return;
+//			}
+//		}
+//	}
+//}
+
+//方法二:异或法（什么神仙）
+
+void FindDog(int* arr,int size,int* Dog)
 {
-	char* start = dest;
-	while (*(++dest))//找到目标字符串的'\0'
+	//1对所有的数组元素进行一次异或
+	int i,x,pos,a,b;
+	x = 0, pos = 0, a = 0,b=0;
+	for (i = 0; i < size; i++)
 	{
-		;
+		x ^= arr[i];
 	}
-	while (count--)
+	//2依据异或结果 把数组分为两个数组
+	while (!(x & 1))
 	{
-		if (!(*dest++ = *source++))
+		pos++;
+		x >>= 1;
+	}
+	for (i = 0; i < size; i++)
+	{
+		if (arr[i] & (1 << pos))
 		{
-			return start;
+			a ^= arr[i];
+		}
+		else
+		{
+			b ^= arr[i];
 		}
 	}
-	*dest = '\0';
-	return start;
+	Dog[0] = a;
+	Dog[1] = b;
 }
-
 int main()
 {
-	char str1[20] = "abc";
-	char str2[] = "defhgijk";
-	/*strncat(str1, str2, 6);
-	printf(str1);*/
-	my_strncat(str1, str2, 6);
-	printf(str1);
+	int arr[] = { 5,5,6,6,1,2,3,2,1,7};
+	int Dog[2];
+	FindDog(arr,sizeof(arr)/sizeof(arr[0]),Dog);
+	printf("dog is %d and %d\n", Dog[0], Dog[1]);
 	return 0;
 }
