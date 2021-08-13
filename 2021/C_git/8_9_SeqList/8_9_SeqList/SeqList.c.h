@@ -1,12 +1,43 @@
+// SeqList.h
 #pragma once
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
 
-//便于修改定长数组的元素个数
-#define N 100
-//便于修改定长数组的元素类型
-typedef int SQDataTpye;
-//定长数组
-struct SeqList
+typedef int SLDateType;
+typedef struct SeqList
 {
-	SQDataTpye a[N];
-	int size;
+	SLDateType* a;
+	size_t size;
+	size_t capacity; // unsigned int
+}SeqList;
+
+// 对数据的管理:增删查改 
+void SeqListInit(SeqList* ps);
+void SeqListDestory(SeqList* ps);
+
+void SeqListPrint(SeqList* ps);
+void SeqListPushBack(SeqList* ps, SLDateType x);
+void SeqListPushFront(SeqList* ps, SLDateType x);
+void SeqListPopFront(SeqList* ps);
+void SeqListPopBack(SeqList* ps);
+
+enum Func
+{
+	EXIT,
+	PRINT,
+	INSERT,
+	PUSHBACK,
+	PUSHFRONT,
+	ERASE,
+	POPFRONT,
+	POPBACK,
+	FIND,
+	DESTORY
 };
+// 顺序表查找
+int SeqListFind(SeqList* ps, SLDateType x);
+// 顺序表在pos位置插入x
+void SeqListInsert(SeqList* ps, size_t pos, SLDateType x);
+// 顺序表删除pos位置的值
+void SeqListErase(SeqList* ps, size_t pos);
