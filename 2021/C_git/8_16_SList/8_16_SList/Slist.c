@@ -19,6 +19,7 @@ void SListPrint(SListNode* plist)
 	SListNode* cur = plist;
 	// 如果cur是空指针 打印cur 
 	//如果不是 先把当前结点的data成员打印出来 然后把当前结点的next成员赋给cur指针 循环直到该cur指针为NULL
+	printf("Slist:");
 	while (cur)
 	{
 		printf("%d->",cur->data);
@@ -109,7 +110,7 @@ SListNode* SListFind(SListNode* plist, SLTDateType x)
 	//如果链表没节点 直接返回一个空指针
 	if (!cur)
 	{
-		printf("No such a node.\n");
+		printf("No such a data.\n");
 		return NULL;
 	}
 	//如果至少一个结点 则遍历链表 找到目标结点返回目标结点地址 找不到就返回空指针(怎么感觉逻辑有点搓)
@@ -129,4 +130,55 @@ SListNode* SListFind(SListNode* plist, SLTDateType x)
 		}
 	}
 	return NULL;
+}
+
+void SListInsert(SListNode** pplist, SListNode* pos, SLTDateType x)
+{
+	//如果是个指向目标结点的地址是空指针 则什么也不做
+	if (!pos)
+	{
+		return;
+	}
+	//如果指向的目标结点为链表的第一个元素 复用头插
+	else if (pos == *pplist)
+	{
+		SListPushFront(pplist, x);
+	}
+	//其他情况 则开辟一个新节点 找到目标结点的前一个结点 把其的next成员改为新结点的地址 把目标结点的地址赋给新结点的next成员
+	else
+	{
+		SListNode* newcode = BuySListNode(x);
+		SListNode* prev = *pplist;
+		while (prev->next != pos)
+		{
+			prev = prev->next;
+		}
+		prev->next = newcode;
+		newcode->next = pos;
+	}
+}
+
+void SListErase(SListNode** pplist, SListNode* pos)
+{
+	//如果是个指向目标结点的地址是空指针 则什么也不做
+	if (!pos)
+	{
+		return;
+	}
+	//如果指向的目标结点为链表的第一个元素 复用头删
+	else if (pos == *pplist)
+	{
+		SListPopFront(pplist);
+	}
+	//其他情况 将目标结点的上一个结点的next成员置为目标结点的next成员 然后将目标结点置空
+	else
+	{
+		SListNode* prev = *pplist;
+		while (prev->next != pos)
+		{
+			prev = prev->next;
+		}
+		prev->next = pos->next;
+		free(pos);
+	}
 }

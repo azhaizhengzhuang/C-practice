@@ -4,6 +4,22 @@
 #include<stdlib.h>
 typedef int SLTDateType;
 
+enum Func
+{
+	EXIT,
+	PUSHBACK,
+	PUSHFRONT,
+	POPBACK,
+	POPFRONT,
+	FIND,
+	PRINT
+};
+enum FIND
+{
+	CANCEL,
+	INSERT,
+	ERASE
+};
 typedef struct SListNode
 
 {
