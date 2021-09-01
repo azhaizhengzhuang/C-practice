@@ -89,6 +89,7 @@ int IsDie(Snake* snake, HWND hwnd)
 		|| snake->xy[0].y < 0
 		|| snake->xy[0].y == 480)
 	{
+		PlaySound(TEXT("…ﬂÀ¿Õˆ.wav"), NULL, SND_ASYNC);
 		MessageBox(hwnd, "you lose", "tips", MB_OK);
 		return 1;
 	}
@@ -97,6 +98,7 @@ int IsDie(Snake* snake, HWND hwnd)
 	{
 		if (snake->xy[0].x == snake->xy[i].x&&snake->xy[0].y == snake->xy[i].y)
 		{
+			PlaySound(TEXT("…ﬂÀ¿Õˆ.wav"), NULL, SND_ASYNC);
 			MessageBox(hwnd, "you lose", "tips", MB_OK);
 			return 1;
 		}
@@ -140,6 +142,7 @@ void IsEaten(Food* food, Snake* snake)
 {
 	if (snake->xy[0].x == food->xy.x&&snake->xy[0].y == food->xy.y)
 	{
+		PlaySound(TEXT("≥‘ ≥ŒÔ.wav"), NULL, SND_ASYNC);
 		snake->size++;
 		food->flag = 0;
 		food->score += 10;
@@ -157,5 +160,5 @@ void PrintScore(Food* food)
 
 void Bgm()
 {
-	PlaySound(TEXT("D:\\code\\C-practice\\2021\\C_git\\8_29_snake\\8_29_snake\\Ã∞≥‘…ﬂ.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	/*PlaySound(TEXT("Ã∞≥‘…ﬂ.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);*/
 }
